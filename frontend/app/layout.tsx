@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Marcellus } from "next/font/google";
 import "./globals.css";
+import SharedLayout from "./components/shared/SharedLayout";
 
-const inter = Inter({ subsets: ["latin"] });
+const marcellus = Marcellus({
+  weight: "400",
+  style: "normal",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +21,11 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={marcellus.className}>
+        <div className="w-full">
+          <SharedLayout>{children}</SharedLayout>
+        </div>
+      </body>
     </html>
   );
 }
