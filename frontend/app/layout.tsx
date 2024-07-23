@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={marcellus.className}>
-        <div className="w-full">
+        <div className="w-full px-5">
           <SharedLayout>{children}</SharedLayout>
         </div>
       </body>
