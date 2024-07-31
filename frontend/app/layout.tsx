@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Marcellus } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
-import SharedLayout from "./components/shared/SharedLayout";
+import SharedLayout from "./shared/components/SharedLayout";
+import React from "react";
+import Providers from "./shared/provider/Providers";
 
-const marcellus = Marcellus({
+const raleway = Raleway({
   weight: "400",
   style: "normal",
   subsets: ["latin"],
@@ -21,10 +23,12 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={marcellus.className}>
-        <div className="w-full px-5">
-          <SharedLayout>{children}</SharedLayout>
-        </div>
+      <body className={raleway.className}>
+        <Providers>
+          <div className="w-full px-5">
+            <SharedLayout>{children}</SharedLayout>
+          </div>
+        </Providers>
       </body>
     </html>
   );

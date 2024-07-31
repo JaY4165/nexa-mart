@@ -1,13 +1,12 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-
+// import Footer from "./Footer";
+import NavbarComponent from "./NavbarComponent";
 function SharedLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Navbar />
+      <NavbarComponent />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
