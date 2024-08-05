@@ -25,7 +25,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={raleway.className}>
         <Providers>
-          <div className="w-full px-5">
+          <div className="w-full">
             <SharedLayout>{children}</SharedLayout>
           </div>
         </Providers>

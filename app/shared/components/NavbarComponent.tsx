@@ -16,17 +16,33 @@ import { Search } from "lucide-react";
 import NavUtilClickables from "./NavUtilClickables";
 
 export default function NavbarComponent() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
-  const menuItems = ["Kids", "Women", "Men", "Brands"];
-
+  const menuItems: INavItem[] = [
+    {
+      title: "Kids",
+      href: "/kids",
+    },
+    {
+      title: "Women",
+      href: "/women",
+    },
+    {
+      title: "Men",
+      href: "/men",
+    },
+    {
+      title: "Brands",
+      href: "/brands",
+    },
+  ];
   return (
     <Navbar
       shouldHideOnScroll
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
-      className="w-full"
+      className="min-md:px-[-5rem] w-full pt-2"
     >
       <NavbarContent className="md:hidden" justify="start">
         <NavbarMenuToggle
@@ -36,7 +52,9 @@ export default function NavbarComponent() {
 
       <NavbarContent className="md:hidden" justify="end">
         <NavbarBrand className="flex items-center justify-end">
-          <p className="font-bold text-inherit">NexaMart</p>
+          <p className="font-bold text-inherit">
+            Nexa<span className="text-danger-400">Mart</span>
+          </p>
         </NavbarBrand>
       </NavbarContent>
 
@@ -45,7 +63,9 @@ export default function NavbarComponent() {
         justify="start"
       >
         <NavbarBrand>
-          <p className="text-xl font-extrabold text-inherit">NexaMart</p>
+          <p className="text-2xl font-extrabold text-inherit">
+            Nexa<span className="text-danger-400">Mart</span>
+          </p>
         </NavbarBrand>
       </NavbarContent>
 
@@ -55,8 +75,12 @@ export default function NavbarComponent() {
             Kids
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link href="#" className="font-semibold">
+        <NavbarItem isActive className="text-danger-400">
+          <Link
+            href="/"
+            color="foreground"
+            className="font-semibold active:text-danger-400"
+          >
             Women
           </Link>
         </NavbarItem>
@@ -76,6 +100,7 @@ export default function NavbarComponent() {
         <NavbarItem className="hidden lg:flex">
           <Input
             isClearable
+            variant="flat"
             classNames={{
               base: "max-w-full h-10",
               mainWrapper: "h-full",
@@ -83,7 +108,7 @@ export default function NavbarComponent() {
               inputWrapper:
                 "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
             }}
-            placeholder="Type to search..."
+            placeholder="Search for products"
             size="sm"
             startContent={<Search size={18} />}
             type="input"
@@ -92,9 +117,9 @@ export default function NavbarComponent() {
         <NavUtilClickables />
       </NavbarContent>
 
-      <NavbarMenu className="max-md:hidden">
+      <NavbarMenu className="min-md:hidden">
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={item.title}>
             <Link
               className="w-full"
               color={
@@ -104,10 +129,10 @@ export default function NavbarComponent() {
                     ? "danger"
                     : "foreground"
               }
-              href="#"
+              href={item.href}
               size="lg"
             >
-              {item}
+              {item.title}
             </Link>
           </NavbarMenuItem>
         ))}
