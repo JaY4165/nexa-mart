@@ -10,12 +10,10 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
   Input,
-  Divider,
 } from "@nextui-org/react";
-import { Heart, Search, ShoppingBag, User } from "lucide-react";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+import { Search } from "lucide-react";
+import NavUtilClickables from "./NavUtilClickables";
 
 export default function NavbarComponent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -57,7 +55,7 @@ export default function NavbarComponent() {
             Kids
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
+        <NavbarItem>
           <Link href="#" className="font-semibold">
             Women
           </Link>
@@ -91,18 +89,7 @@ export default function NavbarComponent() {
             type="input"
           />
         </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <User />
-        </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Heart />
-        </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <ShoppingBag />
-        </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <ThemeSwitcher />
-        </NavbarItem>
+        <NavUtilClickables />
       </NavbarContent>
 
       <NavbarMenu className="max-md:hidden">
