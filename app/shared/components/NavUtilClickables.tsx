@@ -11,13 +11,21 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 import { NavProps } from "./NavbarComponent";
 import Link from "next/link";
 
-function NavUtilClickables({ signInUrl, signUpUrl }: NavProps) {
+function NavUtilClickables({ signInUrl, signUpUrl, signOutUser }: NavProps) {
   const handleSignIn = () => {
     window.location.href = signInUrl;
   };
 
   const handleSignUp = () => {
     window.location.href = signUpUrl;
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOutUser();
+    } catch (error) {
+      console.error("Error while signing out user");
+    }
   };
   return (
     <>
@@ -27,13 +35,13 @@ function NavUtilClickables({ signInUrl, signUpUrl }: NavProps) {
             <User className="hover:animate-appearance-in hover:fill-black hover:text-black hover:transition-all hover:duration-500 hover:ease-in-out" />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
-            {/* <DropdownItem key="profile" className="h-14 gap-2">
+            <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
               <p className="font-semibold">zoey@example.com</p>
             </DropdownItem>
-            <DropdownItem key="logout" color="danger">
+            <DropdownItem key="logout" color="danger" onClick={handleSignOut}>
               Log Out
-            </DropdownItem> */}
+            </DropdownItem>
             <DropdownItem key="SignIn" color="danger" onClick={handleSignIn}>
               <Link href={signInUrl}>Log In</Link>
             </DropdownItem>

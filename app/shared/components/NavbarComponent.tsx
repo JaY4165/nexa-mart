@@ -18,9 +18,14 @@ import NavUtilClickables from "./NavUtilClickables";
 export type NavProps = {
   signInUrl: string;
   signUpUrl: string;
+  signOutUser: () => Promise<void>;
 };
 
-export default function NavbarComponent({ signInUrl, signUpUrl }: NavProps) {
+export default function NavbarComponent({
+  signInUrl,
+  signUpUrl,
+  signOutUser,
+}: NavProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
   const menuItems: INavItem[] = [
@@ -110,7 +115,11 @@ export default function NavbarComponent({ signInUrl, signUpUrl }: NavProps) {
             type="input"
           />
         </NavbarItem>
-        <NavUtilClickables signInUrl={signInUrl} signUpUrl={signUpUrl} />
+        <NavUtilClickables
+          signInUrl={signInUrl}
+          signUpUrl={signUpUrl}
+          signOutUser={signOutUser}
+        />
       </NavbarContent>
 
       <NavbarMenu className="min-md:hidden">
