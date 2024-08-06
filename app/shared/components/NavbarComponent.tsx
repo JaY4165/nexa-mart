@@ -15,7 +15,12 @@ import {
 import { Search } from "lucide-react";
 import NavUtilClickables from "./NavUtilClickables";
 
-export default function NavbarComponent() {
+export type NavProps = {
+  signInUrl: string;
+  signUpUrl: string;
+};
+
+export default function NavbarComponent({ signInUrl, signUpUrl }: NavProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
   const menuItems: INavItem[] = [
@@ -52,9 +57,11 @@ export default function NavbarComponent() {
 
       <NavbarContent className="md:hidden" justify="end">
         <NavbarBrand className="flex items-center justify-end">
-          <p className="font-bold text-inherit">
-            Nexa<span className="text-danger-400">Mart</span>
-          </p>
+          <Link href="/" color="foreground">
+            <p className="font-bold text-inherit">
+              Nexa<span className="text-danger-400">Mart</span>
+            </p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -63,37 +70,26 @@ export default function NavbarComponent() {
         justify="start"
       >
         <NavbarBrand>
-          <p className="text-2xl font-extrabold text-inherit">
-            Nexa<span className="text-danger-400">Mart</span>
-          </p>
+          <Link href="/" color="foreground">
+            <p className="text-2xl font-extrabold text-inherit">
+              Nexa<span className="text-danger-400">Mart</span>
+            </p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden gap-8 pr-20 md:flex" justify="center">
-        <NavbarItem>
-          <Link color="foreground" className="font-semibold" href="#">
-            Kids
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive className="text-danger-400">
-          <Link
-            href="/"
-            color="foreground"
-            className="font-semibold active:text-danger-400"
-          >
-            Women
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" className="font-semibold" href="#">
-            Men
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" className="font-semibold" href="#">
-            Brands
-          </Link>
-        </NavbarItem>
+        {menuItems.map((item) => (
+          <NavbarItem key={item.title}>
+            <Link
+              color="foreground"
+              className="font-semibold hover:text-danger-400"
+              href={item.href}
+            >
+              {item.title}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
       <NavbarContent justify="end" className="gap-5 max-md:hidden">
@@ -114,7 +110,7 @@ export default function NavbarComponent() {
             type="input"
           />
         </NavbarItem>
-        <NavUtilClickables />
+        <NavUtilClickables signInUrl={signInUrl} signUpUrl={signUpUrl} />
       </NavbarContent>
 
       <NavbarMenu className="min-md:hidden">

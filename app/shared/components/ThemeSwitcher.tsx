@@ -20,13 +20,14 @@ export function ThemeSwitcher() {
         <Sun
           size={24}
           onClick={() => setTheme("light")}
-          className="cursor-pointer"
+          className="cursor-pointer hover:fill-orange-500"
+
         />
       ) : (
         <Moon
           size={24}
           onClick={() => setTheme("dark")}
-          className="cursor-pointer"
+          className="cursor-pointer hover:fill-black"
         />
       )}
     </>

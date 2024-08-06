@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
+    "@million/lint": "^1.0.0-rc.84",
     "@nextui-org/react": "^2.4.6",
     "@workos-inc/authkit-nextjs": "^0.8.0",
     "framer-motion": "^11.3.19",

@@ -8,8 +8,10 @@ import {
 import { Heart, ShoppingBag, User } from "lucide-react";
 import React from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { NavProps } from "./NavbarComponent";
+import Link from "next/link";
 
-function NavUtilClickables() {
+function NavUtilClickables({ signInUrl, signUpUrl }: NavProps) {
   return (
     <>
       <NavbarItem className="hidden cursor-pointer md:flex">
@@ -25,17 +27,17 @@ function NavUtilClickables() {
             <DropdownItem key="logout" color="danger">
               Log Out
             </DropdownItem> */}
-            <DropdownItem key="login" color="danger">
-              Log In
+            <DropdownItem key="SignIn" color="danger">
+              <Link href={signInUrl}>Log In</Link>
             </DropdownItem>
-            <DropdownItem key="logout" color="danger">
-              Sign Up
+            <DropdownItem key="signUp" color="danger">
+              <Link href={signUpUrl}>Sign Up</Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </NavbarItem>
       <NavbarItem className="hidden cursor-pointer md:flex">
-        <Heart />
+        <Heart className="hover:fill-danger-400" />
       </NavbarItem>
       <NavbarItem className="hidden cursor-pointer md:flex">
         <ShoppingBag />

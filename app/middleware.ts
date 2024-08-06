@@ -1,6 +1,19 @@
 import { authkitMiddleware } from '@workos-inc/authkit-nextjs';
 
 
-export default authkitMiddleware();
+export default authkitMiddleware({
+    middlewareAuth: {
+        enabled: true,
+        unauthenticatedPaths: ['/'],
+    },
+    debug: true
+});
 
-export const config = { matcher: ['/', '/admin'] };
+
+export const config = {
+    matcher: [
+        '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+        '/(api|trpc)(.*)',
+        '/',
+    ]
+};
