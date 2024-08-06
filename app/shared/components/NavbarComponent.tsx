@@ -83,7 +83,7 @@ export default function NavbarComponent({ signInUrl, signUpUrl }: NavProps) {
           <NavbarItem key={item.title}>
             <Link
               color="foreground"
-              className="font-semibold hover:text-danger-400"
+              className="font-semibold hover:animate-appearance-in hover:text-danger-400 hover:transition-all hover:duration-500 hover:ease-in-out"
               href={item.href}
             >
               {item.title}
