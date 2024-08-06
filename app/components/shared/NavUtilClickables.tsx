@@ -8,16 +8,18 @@ import {
 import { Heart, ShoppingBag, User } from "lucide-react";
 import React from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { NavProps } from "./NavbarComponent";
 import Link from "next/link";
+import { signInUrl, signOutUser, signUpUrl } from "@/app/actions/authActions";
 
-function NavUtilClickables({ signInUrl, signUpUrl, signOutUser }: NavProps) {
-  const handleSignIn = () => {
-    window.location.href = signInUrl;
+function NavUtilClickables() {
+  const handleSignIn = async () => {
+    const logInurl = await signInUrl();
+    window.location.href = logInurl;
   };
 
-  const handleSignUp = () => {
-    window.location.href = signUpUrl;
+  const handleSignUp = async () => {
+    const registerUrl = await signUpUrl();
+    window.location.href = registerUrl;
   };
 
   const handleSignOut = async () => {
@@ -43,10 +45,10 @@ function NavUtilClickables({ signInUrl, signUpUrl, signOutUser }: NavProps) {
               Log Out
             </DropdownItem>
             <DropdownItem key="SignIn" color="danger" onClick={handleSignIn}>
-              <Link href={signInUrl}>Log In</Link>
+              Log In
             </DropdownItem>
             <DropdownItem key="signUp" color="danger" onClick={handleSignUp}>
-              <Link href={signUpUrl}>Sign Up</Link>
+              Sign Up
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

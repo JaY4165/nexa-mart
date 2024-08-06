@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
-import SharedLayout from "./shared/components/SharedLayout";
+import SharedLayout from "./components/shared/SharedLayout";
 import React from "react";
-import Providers from "./shared/provider/Providers";
+import Providers from "./provider/Providers";
 
 const raleway = Raleway({
   weight: "400",

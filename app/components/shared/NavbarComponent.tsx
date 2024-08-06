@@ -15,17 +15,7 @@ import {
 import { Search } from "lucide-react";
 import NavUtilClickables from "./NavUtilClickables";
 
-export type NavProps = {
-  signInUrl: string;
-  signUpUrl: string;
-  signOutUser: () => Promise<void>;
-};
-
-export default function NavbarComponent({
-  signInUrl,
-  signUpUrl,
-  signOutUser,
-}: NavProps) {
+export default function NavbarComponent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
   const menuItems: INavItem[] = [
@@ -115,11 +105,7 @@ export default function NavbarComponent({
             type="input"
           />
         </NavbarItem>
-        <NavUtilClickables
-          signInUrl={signInUrl}
-          signUpUrl={signUpUrl}
-          signOutUser={signOutUser}
-        />
+        <NavUtilClickables />
       </NavbarContent>
 
       <NavbarMenu className="min-md:hidden">
