@@ -34,7 +34,7 @@ function NavUtilClickables() {
       <NavbarItem className="hidden cursor-pointer md:flex">
         <Dropdown placement="bottom" backdrop="blur">
           <DropdownTrigger>
-            <User className="hover:animate-appearance-in hover:fill-black hover:text-black hover:transition-all hover:duration-500 hover:ease-in-out" />
+            <User className="ease-in-out hover:animate-appearance-in hover:fill-black hover:text-black hover:transition-all hover:duration-500 hover:ease-in-out dark:hover:fill-white dark:hover:text-white" />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
