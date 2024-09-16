@@ -38,11 +38,14 @@ export default function NavbarComponent() {
   ];
   return (
     <Navbar
+      classNames={{
+        base: "bg-transparent dark:bg-transparent",
+      }}
       shouldHideOnScroll
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
-      className="min-md:px-[-5rem] w-full h-[15vh]"
+      className="min-md:px-[-5rem] h-[15vh] w-full"
     >
       <NavbarContent className="md:hidden" justify="start">
         <NavbarMenuToggle
@@ -108,7 +111,7 @@ export default function NavbarComponent() {
         <NavUtilClickables />
       </NavbarContent>
 
-      <NavbarMenu className="min-md:hidden pt-5">
+      <NavbarMenu className="min-md:hidden mt-5 pt-5">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={item.title}>
             <Link
