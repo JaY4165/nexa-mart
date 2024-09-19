@@ -14,11 +14,12 @@
 }
 .embla__container {
   display: flex;
-  height: 500px;
+  height: 100%;
 }
 .embla__slide {
   flex: 0 0 80%;
   min-width: 0;
   max-width: max-content;
+  max-height: fit-content;
   margin-right: 30px;
 }

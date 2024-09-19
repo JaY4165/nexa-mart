@@ -1,13 +1,13 @@
-"use client";
-
 import { Card, CardFooter, Image } from "@nextui-org/react";
 
 function CategoryCard() {
   return (
     <Card isFooterBlurred radius="lg" className="cursor-pointer border-none">
       <Image
+        isLoading={false}
+        isZoomed
         alt="Woman listing to music"
-        className="aspect-auto object-cover hover:scale-105"
+        className="aspect-auto object-cover"
         height={200}
         src="/images/banner-1.jpg"
         width={200}
